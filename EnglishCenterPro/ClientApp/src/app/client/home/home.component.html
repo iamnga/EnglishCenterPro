@@ -1,0 +1,336 @@
+    <!--====== Slider Start ======-->
+
+<section class="slider-area slider-active">
+  <!-- Begin Carousel -->
+  <ngb-carousel *ngIf="images">
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[0]" alt="Frozen 2" class="img img-fluid w-100">
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[1]" alt="Joker 2019" class="img img-fluid w-100">
+      </div>
+    </ng-template>
+  </ngb-carousel>
+  <!-- End Carousel -->
+</section>
+
+<!--====== Slider Ends ======-->
+<!--====== Features Start ======-->
+
+<section class="features-area">
+  <div class="container">
+    <div class="features-wrapper">
+      <div class="row justify-content-end">
+        <div class="col-lg-8">
+          <h2 class="features-title">Cung cấp <span>môi trường <br> giáo dục</span> tốt nhất</h2>
+        </div>
+      </div>
+      <div class="row justify-content-end">
+        <div class="col-lg-11">
+          <div class="features-image">
+            <img src="assets/images/features.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="features-mask">
+        <div class="features-mask-image bg_cover" style="background-image: url(assets/images/features-bg.jpg);">
+        </div>
+        <div class="features-mask-content">
+          <p>Chất lượng</p>
+          <p>Chuyên nghiệp</p>
+          <p>Hiện đại</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--====== Features Ends ======-->
+<!--====== Top Courses Start ======-->
+
+<section class="top-courses-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="section-title mt-40">
+          <h2 class="title">Các khóa học <br> tiêu biểu</h2>
+          <p>Nhiều lựa chọn phù hợp cho nhiều lứa tuổi và mục tiêu</p>
+        </div>
+      </div>
+    </div>
+    <div class="courses-wrapper">
+      <div class="row">
+        <div class="col-lg-3 col-sm-6 courses-col" *ngFor="let item of courses">
+          <div class="single-courses mt-30 wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.2s">
+            <h4 class="courses-title"><a [routerLink]="['/course/' + item.id]">{{item.title}}</a></h4>
+            <div class="duration-fee">
+              <p class="duration">Thời gian: <span> {{item.duration}}</span></p>
+            </div>
+            <div class="duration-fee">
+              <p class="duration">Đối tượng: <span> {{item.subjects}}</span></p>
+            </div>
+            <div class="courses-link">
+              <a class="more" [routerLink]="['/course/' + item.id]">Xem chi tiết <i class="fal fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--====== Top Courses Ends ======-->
+<!--====== Specialty Start ======-->
+
+<div class="specialty-area">
+  <div class="container">
+    <div class="row no-gutters wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.2s">
+      <div class="col-sm-4">
+        <div class="single-specialty mt-30">
+          <div class="specialty-box">
+            <div class="box-icon">
+              <img src="assets/images/icon/icon-1.png" alt="">
+            </div>
+            <div class="box-content">
+              <p>Toàn diện kỹ năng</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="single-specialty active mt-30">
+          <div class="specialty-box">
+            <div class="box-icon">
+              <img src="assets/images/icon/icon-2.png" alt="">
+            </div>
+            <div class="box-content">
+              <p>Phương pháp học mới</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="single-specialty mt-30">
+          <div class="specialty-box">
+            <div class="box-icon">
+              <img src="assets/images/icon/icon-3.png" alt="">
+            </div>
+            <div class="box-content">
+              <p>Chứng chỉ sau khóa học</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--====== Specialty Ends ======-->
+<!--====== Campus Visit Start ======-->
+
+<section class="campus-visit-area">
+  <div class="container">
+    <div class="campus-visit-wrapper">
+      <div class="campus-image-col">
+        <ngx-slick-carousel class="carousel campus-image"
+                            #slickModal="slick-carousel"
+                            [config]="slideConfig">
+          <div ngxSlickItem class="slide">
+            <div class=" single-campus">
+              <img src="https://images.pexels.com/photos/4019754/pexels-photo-4019754.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="">
+            </div>
+          </div>
+          <div ngxSlickItem class="slide">
+            <div class=" single-campus">
+              <img src="https://images.pexels.com/photos/4019758/pexels-photo-4019758.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="">
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+      <div class="campus-content-col">
+        <div class="campus-content">
+          <h2 class="campus-title">Cơ sở vật chất</h2>
+          <span class="line"></span>
+          <p>phòng học sạch sẽ, thoáng mát, tạo cảm giác hứng thú cho học viên</p>
+          <h3 class="video-title">xem video chi tiết</h3>
+          <a class="play video-popup" href="https://www.youtube.com/watch?v=0qHWub21h5c"><i class="fas fa-play"></i> <span>Xem ngay</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--====== Campus Visit Ends ======-->
+<!--====== Testimonials Start ======-->
+
+<section class="testimonials-area">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-4">
+        <div class="testimonials-title">
+          <h2 class="title">Nhận xét từ phụ huynh và học viên</h2>
+          <span class="line"></span>
+          <p>Oro vô cùng trân trọng những lời nhận xét từ phụ huynh và học viên đã đặt niềm tin vào Oro</p>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="testimonials-wrapper">
+          <div class="testimonials-shape shape-1"></div>
+          <div class="testimonials-shape shape-2"></div>
+          <div class="testimonials-shape shape-3"></div>
+
+          <div class="row no-gutters">
+            <div class="col-lg-6 col-md-5">
+              <ngx-slick-carousel class="carousel testimonials-image"
+                                  #slickModal="slick-carousel"
+                                  [config]="slideConfig2">
+                <div ngxSlickItem class="slide">
+                  <div class="single-testimonial-image">
+                    <img src="assets/images/testimonials-1.png" alt="">
+                  </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                  <div class="single-testimonial-image">
+                    <img src="assets/images/testimonials-2.png" alt="">
+                  </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                  <div class="single-testimonial-image">
+                    <img src="assets/images/testimonials-3.png" alt="">
+                  </div>
+                </div>
+              </ngx-slick-carousel>
+            </div>
+            <div class="col-lg-6 col-md-7">
+              <ngx-slick-carousel class="carousel testimonials-content"
+                                  #slickModal="slick-carousel"
+                                  [config]="slideConfig3">
+                <div ngxSlickItem class="slide">
+                  <div class="single-testimonial-content">
+                    <div class="content-text">
+                      <i class="fas fa-quote-right"></i>
+                      <p>Thầy cô biết cách truyền cảm hứng để mọi người luôn thấy mình được nghe nói tiếng Anh liên tục. Học viên được khuyến khích nói và đừng sợ sai, thầy cô luôn sẵn sàng chỉnh sửa để mình nói chuẩn và rõ ràng hơn.</p>
+                    </div>
+                    <div class="content-meta">
+                      <p class="name">Ông Nguyễn Văn A</p>
+                      <p class="designation">TPKD công ty ABC</p>
+                    </div>
+                  </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                  <div class="single-testimonial-content">
+                    <div class="content-text">
+                      <i class="fas fa-quote-right"></i>
+                      <p>Giáo viên thường chỉ ra được những lỗi sai trong phát âm người Việt hay mắc phải. Chủ đề học đa dạng và được luyện tập nhiều giúp em tăng độ phản xạ khi bước ra giao tiếp ngoài thực tế. Với chi phí hợp lý, em rất hài lòng về lựa chọn học tại đây.</p>
+                    </div>
+                    <div class="content-meta">
+                      <p class="name">Bạn Nguyễn Thị B</p>
+                      <p class="designation">Học viên khóa TOEIC</p>
+                    </div>
+                  </div>
+                </div>
+                <div ngxSlickItem class="slide">
+                  <div class="single-testimonial-content">
+                    <div class="content-text">
+                      <i class="fas fa-quote-right"></i>
+                      <p>Từ khi học Oro, con thấy tự tin hơn trong giao tiếp vì có nhiều cơ hội trò chuyện với thầy cô chuyên môn giỏi. Luôn được chỉnh sửa khi có lỗi phát âm. Điều này giúp con rèn luyện được cách phát âm của mình và nói tốt hơn rất nhiều.</p>
+                    </div>
+                    <div class="content-meta">
+                      <p class="name">Em Trần Văn C</p>
+                      <p class="designation">Học viên khóa căn bản</p>
+                    </div>
+                  </div>
+                </div>
+              </ngx-slick-carousel>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--====== Testimonials Ends ======-->
+<!--====== Counter Start ======-->
+
+<div class="counter-area">
+  <div class="container">
+    <div class="counter-wrapper bg_cover" style="background-image: url(assets/images/counter-bg.jpg);">
+      <div class="row">
+        <div class="col-sm-3 col-6 counter-col">
+          <div class="single-counter mt-30 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.2s">
+            <span class="counter-count"><span class="count">100</span> +</span>
+            <p>Học viên</p>
+          </div>
+        </div>
+        <div class="col-sm-3 col-6 counter-col">
+          <div class="single-counter mt-30 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.4s">
+            <span class="counter-count"><span class="count">5</span> +</span>
+            <p>Khóa học</p>
+          </div>
+        </div>
+        <div class="col-sm-3 col-6 counter-col">
+          <div class="single-counter mt-30 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.6s">
+            <span class="counter-count"><span class="count">10</span> +</span>
+            <p>Chuyên gia</p>
+          </div>
+        </div>
+        <div class="col-sm-3 col-6 counter-col">
+          <div class="single-counter mt-30 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.8s">
+            <span class="counter-count"><span class="count">10</span> +</span>
+            <p>Năm kinh nghiệm</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--====== Counter Ends ======-->
+<!--====== Blog Start ======-->
+
+<section class="blog-area mb-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-9">
+        <div class="section-title-2 text-center">
+          <h2 class="title">Bảng tin Oro</h2>
+          <span class="line"></span>
+        </div>
+      </div>
+    </div>
+    <div class="blog-wrapper">
+
+
+      <ngx-slick-carousel class="carousel row blog-active"
+                          #slickModal="slick-carousel"
+                          [config]="slideConfig4">
+        <div ngxSlickItem class="slide col-lg-4" *ngFor="let item of listNews">
+            <div class="single-blog mt-30">
+              <div class="blog-image">
+                <a [routerLink]="['/news/' + item.id]">
+                  <img [src]="item.image" alt="blog">
+                </a>
+              </div>
+              <div class="blog-content">
+                <ul class="meta">
+                  <li>{{item.updatedDate | date: 'dd/MM/yyyy'}}</li>
+                </ul>
+                <h4 class="blog-title"><a [routerLink]="['/news/' + item.id]">{{item.title}}</a></h4>
+                <a [routerLink]="['/news/' + item.id]" class="more">Xem chi tiết <i class="fal fa-chevron-right"></i></a>
+              </div>
+            </div>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </div>
+</section>
+
+<!--====== Blog Ends ======-->
+
+<script>
+  alert(2);
+</script>

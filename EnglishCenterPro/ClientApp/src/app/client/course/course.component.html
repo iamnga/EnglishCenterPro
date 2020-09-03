@@ -1,0 +1,59 @@
+    <!--====== Page Banner Start ======-->
+
+<section class="page-banner">
+  <div class="page-banner-bg bg_cover" style="background-image: url(assets/images/page-banner.jpg);">
+    <div class="container">
+      <div class="banner-content text-center">
+        <h2 class="title">Chi tiết khóa học</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--====== Page Banner Ends ======-->
+<!--====== Courses Details Start ======-->
+
+<section class="courses-details mb-5">
+  <div class="container"  *ngIf="course">
+    <div class="row flex-row-reverse">
+      <div class="col-lg-9">
+        <div class="courses-details-content mt-50">
+          <img [src]="course.image" alt="">
+
+          <h2 class="title">{{course.title}}</h2>
+
+          <div class="mt-4" [innerHTML]="course.content">
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-lg-3">
+        <div class="courses-sidebar pt-20">
+          <div class="courses-features mt-30">
+            <div class="sidebar-title">
+              <h4 class="title">Thông tin khóa học</h4>
+            </div>
+            <ul class="courses-features-items">
+              <li>Thời gian <strong>{{course.duration}}</strong></li>
+              <li>Cách học <strong>{{course.method}}</strong></li>
+              <li>Đối tượng <strong>{{course.subjects}}</strong></li>
+            </ul>
+            <div class="sidebar-btn">
+              <a class="main-btn" href="#">Đăng ký</a>
+            </div>
+          </div>
+
+          <!--<div class="courses-sidebar-banner mt-30">
+            <a href="#">
+              <img src="assets/images/banner.jpg" alt="">
+            </a>
+          </div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--====== Courses Details Ends ======-->
+

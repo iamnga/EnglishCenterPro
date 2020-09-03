@@ -1,0 +1,108 @@
+<h4 class="font-weight-bold my-4">Quản lý tin tức</h4>
+<div class="mb-3 row">
+  <div class="col-md-2">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" (click)="setUpAddNews()">
+      <i class="fas fa-plus"></i> Thêm mới
+    </button>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Mã tin tức</th>
+        <th>Tiêu đề</th>
+        <th>Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listNews">
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+        <td>
+          <button type="button" class="btn btn-info mr-2 btn-sm" data-toggle="modal" data-target="#myModal" (click)="editNews(item)"><i class="fas fa-pencil-alt"></i> Sửa</button>
+          <button class="btn btn-danger btn-sm" [swal]="deleteSwal" (click)="setNewsDelete(item.id)"><i class="fas fa-trash-alt"></i> Xóa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<!-- Modal form thêm mới và sửa thông tin-->
+<div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">{{formTitle}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><i class="fas fa-times"></i></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger mb-3" role="alert" *ngIf="error">
+          {{ error }}
+        </div>
+        <div class="sign-up-form text-left bg-white">
+          <form [formGroup]="addNewsForm">
+            <div class="form-group">
+              <label for="">Tiêu đề</label>
+              <input type="text" class="form-control" formControlName="title" [ngClass]="{
+                      'is-invalid':
+                        (addNewsForm.get('title').touched ||
+                          addNewsForm.get('title').dirty) &&
+                        addNewsForm.get('title').invalid
+                    }" />
+              <div class="invalid-feedback">
+                Tiêu đề tin tức không hợp lệ
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="">Ảnh</label>
+              <input (change)="onFileSelect($event)"  type="file" class="form-control" formControlName="image" [ngClass]="{
+                      'is-invalid':
+                        (addNewsForm.get('image').touched ||
+                          addNewsForm.get('image').dirty) &&
+                        addNewsForm.get('image').invalid
+                    }" />
+              <div class="invalid-feedback">
+                Ảnh tin tức không hợp lệ
+              </div>
+              <img class="w-25 my-3" id="img-course" src="#" alt="Alternate Text" />
+            </div>
+            <div class="form-group">
+              <label for="">Nội dung</label>
+              <quill-editor formControlName="content"></quill-editor>
+
+            </div>
+
+
+            <!-- Nếu các field của Form không hợp lệ thì disable nút Lưu thông tin đi -->
+            <button *ngIf="!isEdit" type="submit" [disabled]="addNewsForm.invalid" class="btn btn-success w-100" (click)="addNews()">
+              Lưu thông tin
+            </button>
+            <button *ngIf="isEdit" type="submit" [disabled]="addNewsForm.invalid" class="btn btn-success w-100" (click)="confirmEdit()">
+              Lưu thông tin
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal form thêm mới và sửa thông tin -->
+
+
+
+<swal #deleteSwal title="Xóa tin tức" text="Bạn có chắc muốn xóa tin tức này không?" icon="question" cancelButtonText="Hủy" [showCancelButton]="true" [focusCancel]="true" (confirm)="deleteNews()">
+</swal>
+
+<button id="showAlertUpdateSuccess" class="d-none" [swal]="['Thật tuyệt vời!', 'Bạn đã cập nhật tin tức thành công', 'success']">
+</button>
+
+
+<button id="showAlertAddSuccess" class="d-none" [swal]="['Thật tuyệt vời!', 'Bạn đã thêm thành công tin tức mới', 'success']">
+</button>
