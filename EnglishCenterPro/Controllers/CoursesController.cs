@@ -7,25 +7,40 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EnglishCenter.Models;
 using EnglishCenterPro.Data;
+using Microsoft.Extensions.Logging;
 
 namespace EnglishCenterPro.Controllers
 {
+
+
     [Route("api/[controller]")]
     [ApiController]
     public class CoursesController : ControllerBase
     {
         private readonly EnglishCenterProContext _context;
 
-        public CoursesController(EnglishCenterProContext context)
+        private readonly ILogger _logger;
+
+        public CoursesController(EnglishCenterProContext context, ILogger<CoursesController> logger)
         {
             _context = context;
+            _logger = logger;
+
         }
 
         // GET: api/Courses
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
         {
-            return await _context.Course.ToListAsync();
+            try
+            {
+                return await _context.Course.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation("GetCourse fail with error: " + ex);
+                return NotFound();
+            }
         }
 
         // GET: api/Courses/5

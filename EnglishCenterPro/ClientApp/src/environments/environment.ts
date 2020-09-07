@@ -4,8 +4,9 @@
 
 //TODO: change apiUrl
 export const environment = {
-  production: false,
-  clientID: "0oaswruskZA6WM0ZW4x6"
+  production: true,
+  clientID: "0oasxkawkiRaR4LSm4x6"
+  //clientID: "0oaswruskZA6WM0ZW4x6" //Dev
 };
 
 /*
