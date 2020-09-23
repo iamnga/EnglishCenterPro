@@ -9,6 +9,7 @@ import { NewsComponent } from './news/news.component';
 import { CommonModule } from "@angular/common";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { QuillModule } from 'ngx-quill';
+import { OktaAuthGuard } from '@okta/okta-angular';
 
 @NgModule({
   declarations: [
@@ -27,9 +28,8 @@ import { QuillModule } from 'ngx-quill';
     RouterModule.forChild([
       {
         path: '', component: AdminComponent, children: [
-          { path: '', component: CourseComponent },
-          { path: 'news', component: NewsComponent },
-          //{ path: 'course/:courseID', component: CourseComponent }
+          { path: '', component: CourseComponent, canActivate: [OktaAuthGuard] },
+          { path: 'news', component: NewsComponent, canActivate: [OktaAuthGuard] }
         ]
       }
     ])

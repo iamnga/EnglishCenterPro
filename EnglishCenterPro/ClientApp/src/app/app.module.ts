@@ -16,7 +16,6 @@ import {
 } from '@okta/okta-angular';
 import { OktaCallbackComponent } from '@okta/okta-angular';
 import { OktaAuthGuard } from '@okta/okta-angular';
-//import { ProfileComponent } from './profile/profile.component';
 import { environment } from '../environments/environment';
 
 const CALLBACK_PATH = 'implicit/callback';

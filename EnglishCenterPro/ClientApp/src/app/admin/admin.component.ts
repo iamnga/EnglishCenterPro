@@ -8,12 +8,11 @@ import { OktaAuthService } from '@okta/okta-angular';
 })
 export class AdminComponent {
   logo = "assets/images/logo.png";
+
   constructor(public oktaAuth: OktaAuthService, public router: Router) {
-    this.oktaAuth.$authenticationState.subscribe(
-      (isAuthenticated: boolean) => {
-        if (!isAuthenticated)
-          this.oktaAuth.loginRedirect('/admin');
-      }
-    );
+  }
+
+  signOutAdmin() {
+    this.oktaAuth.logout('/');
   }
 }
